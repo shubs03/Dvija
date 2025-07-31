@@ -29,7 +29,7 @@ export function HeroSection() {
   
   return (
     <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-background">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-[#0a192f]">
         <BackgroundAnimation />
       </div>
       
@@ -41,14 +41,14 @@ export function HeroSection() {
               transition: 'transform 0.3s ease-out'
              }}
           >
-            ProEdge Innovations
+            Dvija Softech
           </h1>
         </AnimateOnScroll>
         <AnimateOnScroll className="fade-in-up animate-delay-200">
           <p
             className="mt-6 max-w-3xl mx-auto text-lg text-foreground/80 sm:text-xl"
           >
-           We build robust software solutions that empower businesses to achieve new heights of productivity and innovation.
+           We build intuitive software solutions that empower businesses in the service, agriculture, and education sectors to achieve new heights.
           </p>
         </AnimateOnScroll>
         <AnimateOnScroll className="fade-in-up animate-delay-400">
@@ -58,7 +58,7 @@ export function HeroSection() {
                 Explore Products <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-background/50 glowing-btn">
+            <Button asChild size="lg" variant="outline" className="bg-transparent glowing-btn">
               <Link href="/contact">
                 Contact Us <MoveRight className="ml-2 h-5 w-5" />
               </Link>
@@ -117,7 +117,7 @@ const BackgroundAnimation = () => {
 
     let animationFrameId: number;
     const animate = () => {
-      ctx.fillStyle = 'hsl(222.2 84% 4.9%)';
+      ctx.fillStyle = 'hsla(222, 47%, 11%, 1)';
       ctx.fillRect(0, 0, width, height);
       ctx.save();
       ctx.translate(width / 2, height / 2);
@@ -139,7 +139,7 @@ const BackgroundAnimation = () => {
 
         if (px >= -width/2 && px <= width/2 && py >= -height/2 && py <= height/2) {
           const size = (1 - star.z / width) * 4;
-          const shade = parseInt((1 - star.z / width) * 255 as any);
+          const shade = parseInt(((1 - star.z / width) * 255).toString());
           ctx.fillStyle = `rgb(${shade},${shade},${shade})`;
           ctx.beginPath();
           ctx.arc(px, py, size/2, 0, Math.PI * 2);

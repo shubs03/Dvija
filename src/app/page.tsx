@@ -19,10 +19,10 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <AnimateOnScroll>
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">
-              End-to-End Solutions for Modern Enterprises
+              Solutions for Thriving Businesses
             </h2>
             <p className="mt-4 text-lg text-center text-muted-foreground max-w-3xl mx-auto">
-              From developer tools to enterprise-grade cloud infrastructure, we provide the technology backbone for your success.
+              We provide specialized platforms for the beauty, horticulture, and education industries, designed to streamline your success.
             </p>
           </AnimateOnScroll>
 
@@ -58,7 +58,7 @@ export default function Home() {
               Explore Our Flagship Products
             </h2>
             <p className="mt-4 text-lg text-center text-muted-foreground max-w-3xl mx-auto">
-              Our suite of software products is engineered for performance, reliability, and seamless integration to solve your most complex challenges.
+             Our suite of software products is engineered for performance, reliability, and seamless integration to solve your most complex challenges.
             </p>
           </AnimateOnScroll>
 
@@ -90,7 +90,7 @@ export default function Home() {
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl group">
                  <Image
                   src="https://placehold.co/600x450.png"
-                  alt="ProEdge Innovations Team Collaboration"
+                  alt="Dvija Softech Team Collaboration"
                   data-ai-hint="team collaboration"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -101,22 +101,22 @@ export default function Home() {
             <AnimateOnScroll className="fade-in-up animate-delay-200">
               <span className="text-primary font-semibold tracking-wider uppercase">Our Mission</span>
               <h2 className="text-3xl font-bold tracking-tight mt-2 sm:text-4xl">
-                Engineering the Future of Software
+                Building Software That Empowers
               </h2>
               <p className="mt-6 text-lg text-muted-foreground">
-                At ProEdge Innovations, our mission is to empower organizations with state-of-the-art software that drives efficiency, fosters innovation, and creates new opportunities for growth in a digital-first world.
+                At Dvija Softech, our mission is to deliver powerful, intuitive software that streamlines complex operations, enabling our clients in specialized industries to focus on what they do best—providing great service.
               </p>
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start">
                   <CheckCircle className="h-6 w-6 text-accent mt-1 mr-4 shrink-0" />
                   <span>
-                    <strong>Relentless Innovation:</strong> We are committed to continuous research and development to stay at the forefront of technology.
+                    <strong>Industry-Specific Solutions:</strong> We build tools that are perfectly tailored to the unique workflows of your business.
                   </span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-6 w-6 text-accent mt-1 mr-4 shrink-0" />
                   <span>
-                    <strong>Customer Success Obsession:</strong> We build partnerships and are dedicated to ensuring our clients achieve their goals with our solutions.
+                    <strong>User-Centric Design:</strong> We are committed to creating software that is easy to learn, efficient to use, and a pleasure to interact with.
                   </span>
                 </li>
               </ul>

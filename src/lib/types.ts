@@ -2,7 +2,7 @@ export interface Product {
   id: number;
   name: string;
   slug: string;
-  category: 'Software' | 'Hardware' | 'Services';
+  category: 'Salon & Spa' | 'Agriculture' | 'E-Learning';
   tagline: string;
   description: string;
   features: string[];

@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about the mission, vision, and team behind ProEdge Innovations.',
+  description: 'Learn about the mission, vision, and team behind Dvija Softech.',
 };
 
 export default function AboutPage() {
@@ -18,11 +18,11 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 text-center">
           <AnimateOnScroll>
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-              About ProEdge Innovations
+              About Dvija Softech
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto">
               We are a team of passionate innovators, engineers, and problem-solvers
-              dedicated to building the future of technology, one line of code at a time.
+              dedicated to building intuitive software solutions for complex business needs.
             </p>
           </AnimateOnScroll>
         </div>
@@ -40,7 +40,7 @@ export default function AboutPage() {
                             <CardTitle className="mt-4">Our Mission</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p className="text-muted-foreground">To empower businesses with transformative technology, fostering innovation and driving progress in a rapidly evolving digital landscape.</p>
+                            <p className="text-muted-foreground">To empower businesses in the service, agriculture, and education sectors with robust, user-friendly software that streamlines operations, fosters growth, and enhances user engagement.</p>
                         </CardContent>
                     </Card>
                 </AnimateOnScroll>
@@ -53,7 +53,7 @@ export default function AboutPage() {
                             <CardTitle className="mt-4">Our Vision</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p className="text-muted-foreground">To be the leading architect of intelligent systems, creating a future where technology and humanity converge for a smarter, more connected world.</p>
+                            <p className="text-muted-foreground">To become a leading provider of specialized software solutions, recognized for our innovation, quality, and commitment to solving the real-world challenges of our clients.</p>
                         </CardContent>
                     </Card>
                 </AnimateOnScroll>
@@ -66,7 +66,7 @@ export default function AboutPage() {
                             <CardTitle className="mt-4">Our Values</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p className="text-muted-foreground">Innovation, Integrity, Collaboration, and Customer Success are the cornerstones of our company culture and guide every decision we make.</p>
+                            <p className="text-muted-foreground">Customer-centricity, Integrity, and Continuous Improvement are the pillars of our culture, guiding every project and partnership we undertake.</p>
                         </CardContent>
                     </Card>
                 </AnimateOnScroll>
@@ -81,7 +81,7 @@ export default function AboutPage() {
               Our Journey
             </h2>
             <p className="mt-6 text-lg text-muted-foreground text-center max-w-3xl mx-auto">
-              From a small garage to a global presence, our journey has been one of continuous growth and innovation.
+              From a single idea to a suite of powerful products, our journey is one of passion and perseverance.
             </p>
           </AnimateOnScroll>
           <div className="mt-20">
@@ -97,7 +97,7 @@ export default function AboutPage() {
               Meet the Leadership
             </h2>
             <p className="mt-6 text-lg text-muted-foreground text-center max-w-3xl mx-auto">
-              The brilliant minds guiding ProEdge Innovations towards a brighter future.
+              The dedicated minds guiding Dvija Softech to new heights.
             </p>
           </AnimateOnScroll>
           <div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-4">

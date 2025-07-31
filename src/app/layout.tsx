@@ -13,11 +13,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'ProEdge Innovations - Engineering Excellence, Driving Progress',
-    template: '%s | ProEdge Innovations',
+    default: 'Dvija Softech - Intuitive Software for Modern Businesses',
+    template: '%s | Dvija Softech',
   },
-  description: 'ProEdge Innovations offers cutting-edge software and hardware solutions to drive your business forward. Discover our products and join the digital transformation.',
-  keywords: ['SaaS', 'product company', 'innovation', 'tech solutions', 'software', 'hardware'],
+  description: 'Dvija Softech provides specialized software solutions for salons, nurseries, and educational platforms to streamline operations and drive growth.',
+  keywords: ['SaaS', 'salon booking', 'nursery management', 'e-learning', 'CRM', 'software solutions'],
 };
 
 export default function RootLayout({

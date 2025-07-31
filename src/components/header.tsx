@@ -40,7 +40,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <Logo className="h-8 w-8 text-primary" />
-          <span className="text-xl font-bold tracking-tight">ProEdge</span>
+          <span className="text-xl font-bold tracking-tight">Dvija Softech</span>
         </Link>
         
         <nav className="hidden items-center gap-6 md:flex">
@@ -76,7 +76,7 @@ export function Header() {
                 <div className="mb-8 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
                         <Logo className="h-8 w-8 text-primary" />
-                        <span className="text-xl font-bold tracking-tight">ProEdge</span>
+                        <span className="text-xl font-bold tracking-tight">Dvija Softech</span>
                     </Link>
                 </div>
                 <nav className="flex flex-col gap-6">

@@ -98,7 +98,7 @@ export default function ProductDetailPage({ params }: Props) {
                     </ul>
                 </AnimateOnScroll>
                  <AnimateOnScroll className="fade-in-up animate-delay-200">
-                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Ideal Use Cases</h2>
+                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Ideal For</h2>
                     <ul className="mt-8 space-y-5">
                         {product.useCases.map((useCase, index) => (
                             <li key={index} className="flex items-start">

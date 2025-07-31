@@ -6,13 +6,13 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with the ProEdge Innovations team. We\'re here to answer your questions.',
+  description: 'Get in touch with the Dvija Softech team. We\'re here to answer your questions.',
 };
 
 const contactDetails = [
-  { icon: Mail, title: 'Email', value: 'hello@proedge.dev', href: 'mailto:hello@proedge.dev' },
-  { icon: Phone, title: 'Phone', value: '+1 (555) 123-4567', href: 'tel:+15551234567' },
-  { icon: MapPin, title: 'Office', value: '123 Innovation Drive, Tech City, 12345' },
+  { icon: Mail, title: 'Email', value: 'hello@dvijasoftech.dev', href: 'mailto:hello@dvijasoftech.dev' },
+  { icon: Phone, title: 'Phone', value: '+1 (555) 789-1234', href: 'tel:+15557891234' },
+  { icon: MapPin, title: 'Office', value: '456 Digital Avenue, Innovation Hub, 54321' },
 ];
 
 export default function ContactPage() {
@@ -25,7 +25,7 @@ export default function ContactPage() {
               Contact Us
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto">
-              Have a question or want to work with us? We’d love to hear from you.
+              Have a project in mind, a question about our products, or just want to say hello? We’d love to hear from you.
             </p>
           </AnimateOnScroll>
         </div>
