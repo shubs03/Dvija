@@ -1,35 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MoveRight } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { AnimateOnScroll } from "./animate-on-scroll";
 
-const taglines = [
-  "Innovating for a Smarter Future.",
-  "Engineering Excellence, Driving Progress.",
-  "Your Partner in Digital Transformation.",
-];
-
 export function HeroSection() {
-  const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
-  const [isTaglineVisible, setIsTaglineVisible] = useState(true);
-
-  useEffect(() => {
-    const taglineInterval = setInterval(() => {
-      setIsTaglineVisible(false);
-      setTimeout(() => {
-        setCurrentTaglineIndex((prev) => (prev + 1) % taglines.length);
-        setIsTaglineVisible(true);
-      }, 500); // fade out duration
-    }, 4000);
-
-    return () => {
-      clearInterval(taglineInterval);
-    };
-  }, []);
 
   return (
     <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden">
@@ -55,12 +31,9 @@ export function HeroSection() {
         </AnimateOnScroll>
         <AnimateOnScroll className="fade-in-up animate-delay-200">
           <p
-            className={cn(
-              "mt-6 max-w-2xl mx-auto text-lg text-foreground/80 sm:text-xl transition-opacity duration-500",
-              isTaglineVisible ? "opacity-100" : "opacity-0"
-            )}
+            className="mt-6 max-w-2xl mx-auto text-lg text-foreground/80 sm:text-xl"
           >
-            {taglines[currentTaglineIndex]}
+            Innovating for a Smarter Future. Engineering Excellence, Driving Progress.
           </p>
         </AnimateOnScroll>
         <AnimateOnScroll className="fade-in-up animate-delay-400">
