@@ -23,7 +23,7 @@ export function HeroSection() {
           <p
             className="mt-6 max-w-3xl mx-auto text-lg text-foreground/80 sm:text-xl"
           >
-            Innovating for a Smarter Future. Engineering Excellence, Driving Progress.
+           We build robust software solutions that empower businesses to achieve new heights of productivity and innovation.
           </p>
         </AnimateOnScroll>
         <AnimateOnScroll className="fade-in-up animate-delay-400">
@@ -41,119 +41,121 @@ export function HeroSection() {
           </div>
         </AnimateOnScroll>
       </div>
+       <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+        <div className="w-px h-20 bg-border/50"></div>
+      </div>
     </section>
   );
 }
 
 const BackgroundAnimation = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
 
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-    let a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w;
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
 
-    const mouse = { x: width / 2, y: height / 2 };
-    window.addEventListener('mousemove', (event) => {
-      mouse.x = event.clientX;
-      mouse.y = event.clientY;
-    });
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    });
+        const mouse = { x: width / 2, y: height / 2 };
+        const handleMouseMove = (event: MouseEvent) => {
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        
+        const handleResize = () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        };
+        window.addEventListener('resize', handleResize);
 
-    class Particle {
-      x: number;
-      y: number;
-      size: number;
-      vx: number;
-      vy: number;
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.size = Math.random() * 1.5 + 1;
-        this.vx = Math.random() * 2 - 1;
-        this.vy = Math.random() * 2 - 1;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x > width || this.x < 0) this.vx *= -1;
-        if (this.y > height || this.y < 0) this.vy *= -1;
+        class Particle {
+            x: number;
+            y: number;
+            size: number;
+            baseX: number;
+            baseY: number;
+            density: number;
 
-        const dx = this.x - mouse.x;
-        const dy = this.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 100) {
-            const angle = Math.atan2(dy, dx);
-            this.x += Math.cos(angle) * 1;
-            this.y += Math.sin(angle) * 1;
-        }
-      }
-      draw() {
-        ctx!.fillStyle = `hsl(${getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim().replace(/ /g, ', ')})`;
-        ctx!.globalAlpha = 0.5;
-        ctx!.beginPath();
-        ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx!.fill();
-      }
-    }
+            constructor(x: number, y: number) {
+                this.x = x;
+                this.y = y;
+                this.size = 2;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
+            }
 
-    const particles = Array.from({ length: 150 }, () => new Particle());
+            draw() {
+                if (!ctx) return;
+                ctx.fillStyle = 'hsla(var(--primary), 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
 
-    function animate() {
-      ctx!.clearRect(0, 0, width, height);
+            update() {
+                if (!ctx) return;
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const forceDirectionX = dx / distance;
+                const forceDirectionY = dy / distance;
+                const maxDistance = 100;
+                const force = (maxDistance - distance) / maxDistance;
+                const directionX = forceDirectionX * force * this.density;
+                const directionY = forceDirectionY * force * this.density;
 
-      const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--background').trim().replace(/ /g, ', ');
-      const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim().replace(/ /g, ', ');
-      
-      ctx!.fillStyle = `hsl(${bgColor})`;
-      ctx!.fillRect(0,0,width,height);
-      
-      const gradient = ctx!.createLinearGradient(0, 0, width, height);
-      gradient.addColorStop(0, `hsla(${primaryColor}, 0.1)`);
-      gradient.addColorStop(1, `hsla(${bgColor}, 0.1)`);
-      ctx!.fillStyle = gradient;
-      ctx!.fillRect(0, 0, width, height);
-
-      for (const particle of particles) {
-        particle.update();
-        particle.draw();
-      }
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx*dx + dy*dy);
-            if(dist < 100){
-                ctx!.beginPath();
-                ctx!.strokeStyle = `hsl(${getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim().replace(/ /g, ', ')})`;
-                ctx!.lineWidth = 0.2;
-                ctx!.globalAlpha = (100 - dist) / 100;
-                ctx!.moveTo(particles[i].x, particles[i].y);
-                ctx!.lineTo(particles[j].x, particles[j].y);
-                ctx!.stroke();
+                if (distance < maxDistance) {
+                    this.x -= directionX;
+                    this.y -= directionY;
+                } else {
+                    if (this.x !== this.baseX) {
+                        const dx = this.x - this.baseX;
+                        this.x -= dx / 10;
+                    }
+                    if (this.y !== this.baseY) {
+                        const dy = this.y - this.baseY;
+                        this.y -= dy / 10;
+                    }
+                }
             }
         }
-      }
 
-      requestAnimationFrame(animate);
-    }
-    animate();
-    
-    return () => {
-        window.removeEventListener('mousemove', ()=>{});
-        window.removeEventListener('resize', ()=>{});
-    }
+        let particles: Particle[] = [];
+        const init = () => {
+            particles = [];
+            const gap = 20;
+            for (let y = 0; y < height; y += gap) {
+                for (let x = 0; x < width; x += gap) {
+                    particles.push(new Particle(x, y));
+                }
+            }
+        };
 
-  }, []);
+        const animate = () => {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, width, height);
+            for (const particle of particles) {
+                particle.update();
+                particle.draw();
+            }
+            requestAnimationFrame(animate);
+        };
 
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />;
+        init();
+        animate();
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-30" />;
 };
