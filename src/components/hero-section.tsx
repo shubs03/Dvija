@@ -70,6 +70,7 @@ const BackgroundAnimation = () => {
         const handleResize = () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
+            init();
         };
         window.addEventListener('resize', handleResize);
 
@@ -77,66 +78,65 @@ const BackgroundAnimation = () => {
             x: number;
             y: number;
             size: number;
-            baseX: number;
-            baseY: number;
-            density: number;
+            speedX: number;
+            speedY: number;
 
-            constructor(x: number, y: number) {
-                this.x = x;
-                this.y = y;
-                this.size = 2;
-                this.baseX = this.x;
-                this.baseY = this.y;
-                this.density = (Math.random() * 30) + 1;
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if(this.size > 0.2) this.size -= 0.01;
+
+                if (this.x < 0 || this.x > width) this.speedX *= -1;
+                if (this.y < 0 || this.y > height) this.speedY *= -1;
             }
 
             draw() {
                 if (!ctx) return;
                 ctx.fillStyle = 'hsla(var(--primary), 0.5)';
+                ctx.strokeStyle = 'hsla(var(--primary), 0.3)';
+                ctx.lineWidth = 2;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.closePath();
                 ctx.fill();
-            }
-
-            update() {
-                if (!ctx) return;
-                const dx = mouse.x - this.x;
-                const dy = mouse.y - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                const forceDirectionX = dx / distance;
-                const forceDirectionY = dy / distance;
-                const maxDistance = 100;
-                const force = (maxDistance - distance) / maxDistance;
-                const directionX = forceDirectionX * force * this.density;
-                const directionY = forceDirectionY * force * this.density;
-
-                if (distance < maxDistance) {
-                    this.x -= directionX;
-                    this.y -= directionY;
-                } else {
-                    if (this.x !== this.baseX) {
-                        const dx = this.x - this.baseX;
-                        this.x -= dx / 10;
-                    }
-                    if (this.y !== this.baseY) {
-                        const dy = this.y - this.baseY;
-                        this.y -= dy / 10;
-                    }
-                }
             }
         }
 
         let particles: Particle[] = [];
         const init = () => {
             particles = [];
-            const gap = 20;
-            for (let y = 0; y < height; y += gap) {
-                for (let x = 0; x < width; x += gap) {
-                    particles.push(new Particle(x, y));
-                }
+            const numberOfParticles = (width * height) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particles.push(new Particle());
             }
         };
+
+        const connect = () => {
+            let opacityValue = 1;
+            for(let a = 0; a < particles.length; a++) {
+                for(let b = a; b < particles.length; b++) {
+                    let distance = ((particles[a].x - particles[b].x) * (particles[a].x - particles[b].x))
+                                 + ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
+                    if (distance < (width/7) * (height/7)) {
+                        opacityValue = 1 - (distance/20000);
+                        ctx!.strokeStyle = `hsla(var(--primary), ${opacityValue})`;
+                        ctx!.beginPath();
+                        ctx!.moveTo(particles[a].x, particles[a].y);
+                        ctx!.lineTo(particles[b].x, particles[b].y);
+                        ctx!.stroke();
+                    }
+                }
+            }
+        }
 
         const animate = () => {
             if (!ctx) return;
@@ -145,6 +145,7 @@ const BackgroundAnimation = () => {
                 particle.update();
                 particle.draw();
             }
+            connect();
             requestAnimationFrame(animate);
         };
 
