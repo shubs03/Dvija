@@ -80,11 +80,7 @@ const BackgroundAnimation = () => {
 
   const numStars = 1000;
   const starRadius = '0.' + Math.floor(Math.random() * 9) + 1;
-  const cRadius = 100;
   
-  const focalLength = 500;
-  const centerX = typeof window !== 'undefined' ? window.innerWidth / 2 : 0;
-  const centerY = typeof window !== 'undefined' ? window.innerHeight / 2 : 0;
   let speed = 2;
 
 
@@ -119,6 +115,10 @@ const BackgroundAnimation = () => {
 
     let animationFrameId: number;
     const animate = () => {
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const focalLength = canvas.width;
+        
         context.clearRect(0, 0, canvas.width, canvas.height);
         
         tempStars.forEach(star => {
@@ -139,16 +139,12 @@ const BackgroundAnimation = () => {
             const dx = x - mouse.x;
             const dy = y - mouse.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < cRadius) {
-                 const newX = (x-mouse.x) * (cRadius/distance) + mouse.x;
-                 const newY = (y-mouse.y) * (cRadius/distance) + mouse.y;
-                 context.lineTo(newX, newY);
-            }
+            
+            const opacity = Math.max(0, 1 - distance / 300);
 
             context.beginPath();
             context.arc(x, y, r, 0, Math.PI * 2);
-            context.fillStyle = 'hsl(var(--primary))';
+            context.fillStyle = `hsla(var(--primary), ${opacity})`;
             context.fill();
         })
         animationFrameId = requestAnimationFrame(animate);
