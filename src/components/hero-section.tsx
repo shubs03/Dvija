@@ -4,20 +4,19 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { AnimateOnScroll } from "./animate-on-scroll";
+import { useEffect, useRef, useState } from "react";
+import createGlobe from "cobe";
 
 export function HeroSection() {
 
   return (
     <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 -z-20 bg-background"></div>
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(var(--primary),0.5),rgba(255,255,255,0))]"></div>
-        <div className="absolute bottom-[-20%] left-0 right-[-10%] top-0 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(var(--accent),0.4),rgba(255,255,255,0))]"></div>
-         <div className="absolute bottom-0 left-[20%] right-0 top-[10%] h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(var(--primary),0.3),rgba(255,255,255,0))] animate-[float_12s_ease-in-out_infinite]"></div>
-        <div className="absolute bottom-[20%] left-0 right-[20%] top-0 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(var(--accent),0.2),rgba(255,255,255,0))] animate-[float-reverse_10s_ease-in-out_infinite]"></div>
-      </div>
-      <div className="absolute inset-0 bg-background/60 dark:bg-background/80 backdrop-blur-xl z-0"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent z-0"></div>
+        <div className="absolute inset-0 -z-10">
+            <Globe />
+        </div>
+        <div className="absolute inset-0 bg-background/80 dark:bg-background/90 backdrop-blur-sm z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-0"></div>
+
 
       <div className="container mx-auto px-4 z-10 text-center">
         <AnimateOnScroll className="fade-in-up">
@@ -49,4 +48,60 @@ export function HeroSection() {
       </div>
     </section>
   );
+}
+
+
+function Globe() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const locationToAngles = (lat: number, long: number) => {
+    return [Math.PI / 180 * (lat - 90), Math.PI / 180 * (long + 90)]
+  }
+  const [currentPhi, setCurrentPhi] = useState(0);
+
+  useEffect(() => {
+    let phi = currentPhi;
+    let width = 0;
+    const onResize = () => canvasRef.current && (width = canvasRef.current.offsetWidth)
+    window.addEventListener('resize', onResize)
+    onResize()
+    if(!canvasRef.current) return;
+    const globe = createGlobe(canvasRef.current, {
+      devicePixelRatio: 2,
+      width: width * 2,
+      height: width * 2,
+      phi: 0,
+      theta: 0.3,
+      dark: 1,
+      diffuse: 3,
+      mapSamples: 16000,
+      mapBrightness: 1.2,
+      baseColor: [1, 1, 1],
+      markerColor: [251/255, 100/255, 21/255],
+      glowColor: [1.2, 1.2, 1.2],
+      markers: [
+        { location: [37.7595, -122.4367], size: 0.03 },
+        { location: [40.7128, -74.0060], size: 0.1 },
+      ],
+      onRender: (state) => {
+        state.phi = phi;
+        phi += 0.005;
+        setCurrentPhi(phi);
+        state.width = width * 2
+        state.height = width * 2
+      }
+    })
+    return () => {
+      globe.destroy();
+      window.removeEventListener('resize', onResize);
+    }
+  }, [])
+
+  return (
+    <div className="absolute inset-0 flex items-center justify-center">
+        <canvas
+            ref={canvasRef}
+            className="w-full h-full"
+        />
+    </div>
+  )
 }
