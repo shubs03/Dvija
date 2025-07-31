@@ -2,10 +2,11 @@ import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import { ProductCard } from "@/components/product-card";
 import { Button } from "@/components/ui/button";
 import { products, solutions } from "@/data/content";
-import { ArrowRight, CheckCircle, Cpu, Server, Terminal } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { HeroSection } from "@/components/hero-section";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Home() {
   const featuredProducts = products.slice(0, 3);
@@ -32,7 +33,7 @@ export default function Home() {
                 key={solution.title}
                 className={`fade-in-up animate-delay-${index * 200}`}
               >
-                <div className="bg-card p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 h-full">
+                <Card className="bg-card p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 h-full border-transparent bg-gradient-to-br from-secondary/50 to-secondary/20 hover:border-primary/30">
                   <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 text-primary">
                     <solution.icon className="h-6 w-6" />
                   </div>
@@ -40,14 +41,14 @@ export default function Home() {
                   <p className="mt-2 text-muted-foreground">
                     {solution.description}
                   </p>
-                </div>
+                </Card>
               </AnimateOnScroll>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="products" className="py-20 lg:py-32 bg-secondary/50">
+      <section id="products" className="py-20 lg:py-32 bg-secondary/30">
         <div className="container mx-auto px-4">
           <AnimateOnScroll>
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">
@@ -82,20 +83,21 @@ export default function Home() {
 
       <section id="about-preview" className="py-20 lg:py-32">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimateOnScroll className="fade-in-up">
-              <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
-                <Image
+              <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl group">
+                 <Image
                   src="https://placehold.co/600x400.png"
                   alt="ProEdge Innovations Team"
                   data-ai-hint="team meeting"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll className="fade-in-up animate-delay-200">
-              <span className="text-primary font-semibold">Our Mission</span>
+              <span className="text-primary font-semibold tracking-wider uppercase">Our Mission</span>
               <h2 className="text-3xl font-bold tracking-tight mt-2 sm:text-4xl">
                 Driving Innovation, Building Futures
               </h2>

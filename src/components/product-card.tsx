@@ -19,7 +19,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl">
+    <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 group hover:shadow-xl hover:-translate-y-2 border-transparent bg-gradient-to-br from-card to-secondary/20 hover:border-primary/30">
       <CardHeader>
         <div className="relative aspect-video rounded-md overflow-hidden mb-4">
             <Image 
@@ -27,10 +27,11 @@ export function ProductCard({ product }: ProductCardProps) {
                 alt={product.name}
                 fill
                 data-ai-hint={`${product.category} technology`}
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10"></div>
         </div>
-        <Badge variant="outline" className="w-fit">{product.category}</Badge>
+        <Badge variant="secondary" className="w-fit">{product.category}</Badge>
         <CardTitle className="pt-2">{product.name}</CardTitle>
         <CardDescription>{product.tagline}</CardDescription>
       </CardHeader>
