@@ -97,7 +97,7 @@ const BackgroundAnimation = () => {
         }
       }
       draw() {
-        ctx!.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
+        ctx!.fillStyle = `hsl(${getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim()})`;
         ctx!.globalAlpha = 0.5;
         ctx!.beginPath();
         ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -134,7 +134,7 @@ const BackgroundAnimation = () => {
             const dist = Math.sqrt(dx*dx + dy*dy);
             if(dist < 100){
                 ctx!.beginPath();
-                ctx!.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
+                ctx!.strokeStyle = `hsl(${getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim()})`;
                 ctx!.lineWidth = 0.2;
                 ctx!.globalAlpha = (100 - dist) / 100;
                 ctx!.moveTo(particles[i].x, particles[i].y);
