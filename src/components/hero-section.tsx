@@ -5,7 +5,6 @@ import { ArrowRight, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { AnimateOnScroll } from "./animate-on-scroll";
 import React, { useRef, useEffect, useState } from "react";
-import createGlobe from "cobe";
 
 export function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -76,84 +75,100 @@ export function HeroSection() {
 
 const BackgroundAnimation = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const pointerInteracting = useRef(null);
-  const pointerInteractionMovement = useRef(0);
+  const [stars, setStars] = useState<any[]>([]);
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+
+  const numStars = 1000;
+  const starRadius = '0.' + Math.floor(Math.random() * 9) + 1;
+  const cRadius = 100;
   
+  const focalLength = 500;
+  const centerX = typeof window !== 'undefined' ? window.innerWidth / 2 : 0;
+  const centerY = typeof window !== 'undefined' ? window.innerHeight / 2 : 0;
+  let speed = 2;
+
+
   useEffect(() => {
-    let phi = 0;
-    let width = 0;
-    const onResize = () => canvasRef.current && (width = canvasRef.current.offsetWidth);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const context = canvas.getContext('2d');
+    if (!context) return;
+    
+    const onResize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
     window.addEventListener('resize', onResize);
     onResize();
 
-    const globe = createGlobe(canvasRef.current!, {
-      devicePixelRatio: 2,
-      width: width * 2,
-      height: width * 2,
-      phi: 0,
-      theta: 0.3,
-      dark: 1.1,
-      diffuse: 1.2,
-      mapSamples: 16000,
-      mapBrightness: 6,
-      baseColor: [0.3, 0.3, 0.3],
-      markerColor: [0.1, 0.8, 1],
-      glowColor: [0.2, 0.2, 0.2],
-      markers: [],
-       onRender: (state) => {
-        // This prevents rotation while dragging
-        if (!pointerInteracting.current) {
-          // Called on every animation frame.
-          // `state` will be an empty object, return updated params.
-          phi += 0.005
-        }
-        state.phi = phi + pointerInteractionMovement.current;
-        state.width = width * 2;
-        state.height = width * 2;
-      }
-    });
+    let tempStars: any[] = [];
+    for (let i = 0; i < numStars; i++) {
+      tempStars.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        z: Math.random() * window.innerWidth
+      });
+    }
+    setStars(tempStars);
 
-    setTimeout(() => canvasRef.current!.style.opacity = '1');
+    const handleMouseMove = (e: MouseEvent) => {
+        setMouse({x: e.clientX, y: e.clientY});
+    }
+    window.addEventListener('mousemove', handleMouseMove);
 
-    return () => globe.destroy();
-  }, []);
+    let animationFrameId: number;
+    const animate = () => {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        
+        tempStars.forEach(star => {
+            star.z -= speed;
+
+            if (star.z <= 0) {
+                star.x = Math.random() * canvas.width;
+                star.y = Math.random() * canvas.height;
+                star.z = canvas.width;
+            }
+
+            const scale = focalLength / (focalLength + star.z);
+            const r = parseFloat(starRadius) * scale;
+            const x = (star.x - centerX) * scale + centerX;
+            const y = (star.y - centerY) * scale + centerY;
+
+            // Interaction with mouse
+            const dx = x - mouse.x;
+            const dy = y - mouse.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < cRadius) {
+                 const newX = (x-mouse.x) * (cRadius/distance) + mouse.x;
+                 const newY = (y-mouse.y) * (cRadius/distance) + mouse.y;
+                 context.lineTo(newX, newY);
+            }
+
+            context.beginPath();
+            context.arc(x, y, r, 0, Math.PI * 2);
+            context.fillStyle = 'hsl(var(--primary))';
+            context.fill();
+        })
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [mouse]);
 
   return <canvas 
     ref={canvasRef} 
-    onPointerDown={(e) => {
-      // @ts-ignore
-      pointerInteracting.current = e.clientX - pointerInteractionMovement.current;
-      canvasRef.current!.style.cursor = 'grabbing';
-    }}
-    onPointerUp={() => {
-      pointerInteracting.current = null;
-      canvasRef.current!.style.cursor = 'grab';
-    }}
-    onPointerOut={() => {
-      pointerInteracting.current = null;
-      canvasRef.current!.style.cursor = 'grab';
-    }}
-    onMouseMove={(e) => {
-      if (pointerInteracting.current !== null) {
-        const delta = e.clientX - pointerInteracting.current;
-        // @ts-ignore
-        pointerInteractionMovement.current = delta / 200;
-      }
-    }}
-    onTouchMove={(e) => {
-        if (pointerInteracting.current !== null && e.touches[0]) {
-            const delta = e.touches[0].clientX - pointerInteracting.current;
-             // @ts-ignore
-            pointerInteractionMovement.current = delta / 100;
-        }
-    }}
     style={{
       width: '100%',
       height: '100%',
       contain: 'layout paint size',
-      opacity: 0,
-      transition: 'opacity 1s ease',
-      cursor: 'grab'
     }}
   />;
 };
