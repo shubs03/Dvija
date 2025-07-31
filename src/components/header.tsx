@@ -59,7 +59,7 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
-          <Button asChild>
+          <Button asChild className="glowing-btn">
             <Link href="/contact">Contact Sales</Link>
           </Button>
         </div>

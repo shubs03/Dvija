@@ -4,9 +4,30 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { AnimateOnScroll } from "./animate-on-scroll";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import createGlobe from "cobe";
 
 export function HeroSection() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  const x = mousePosition.x;
+  const y = mousePosition.y;
+
+  const rotateX = y ? (y - window.innerHeight / 2) / (window.innerHeight / 2) * -15 : 0;
+  const rotateY = x ? (x - window.innerWidth / 2) / (window.innerWidth / 2) * 15 : 0;
+  
   return (
     <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-background">
       <div className="absolute inset-0 z-0">
@@ -15,7 +36,12 @@ export function HeroSection() {
       
       <div className="container mx-auto px-4 z-10 text-center">
         <AnimateOnScroll className="fade-in-up">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
+           <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70"
+            style={{ 
+              transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+              transition: 'transform 0.3s ease-out'
+             }}
+          >
             ProEdge Innovations
           </h1>
         </AnimateOnScroll>
@@ -28,12 +54,12 @@ export function HeroSection() {
         </AnimateOnScroll>
         <AnimateOnScroll className="fade-in-up animate-delay-400">
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="glowing-btn">
               <Link href="/products">
                 Explore Products <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-background/50">
+            <Button asChild size="lg" variant="outline" className="bg-background/50 glowing-btn">
               <Link href="/contact">
                 Contact Us <MoveRight className="ml-2 h-5 w-5" />
               </Link>
@@ -49,114 +75,85 @@ export function HeroSection() {
 }
 
 const BackgroundAnimation = () => {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const pointerInteracting = useRef(null);
+  const pointerInteractionMovement = useRef(0);
+  
+  useEffect(() => {
+    let phi = 0;
+    let width = 0;
+    const onResize = () => canvasRef.current && (width = canvasRef.current.offsetWidth);
+    window.addEventListener('resize', onResize);
+    onResize();
 
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
-
-        const mouse = { x: width / 2, y: height / 2 };
-        const handleMouseMove = (event: MouseEvent) => {
-            mouse.x = event.clientX;
-            mouse.y = event.clientY;
-        };
-        window.addEventListener('mousemove', handleMouseMove);
-        
-        const handleResize = () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            init();
-        };
-        window.addEventListener('resize', handleResize);
-
-        class Particle {
-            x: number;
-            y: number;
-            size: number;
-            speedX: number;
-            speedY: number;
-
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.speedY = Math.random() * 1 - 0.5;
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if(this.size > 0.2) this.size -= 0.01;
-
-                if (this.x < 0 || this.x > width) this.speedX *= -1;
-                if (this.y < 0 || this.y > height) this.speedY *= -1;
-            }
-
-            draw() {
-                if (!ctx) return;
-                ctx.fillStyle = 'hsla(var(--primary), 0.5)';
-                ctx.strokeStyle = 'hsla(var(--primary), 0.3)';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.closePath();
-                ctx.fill();
-            }
+    const globe = createGlobe(canvasRef.current!, {
+      devicePixelRatio: 2,
+      width: width * 2,
+      height: width * 2,
+      phi: 0,
+      theta: 0.3,
+      dark: 1.1,
+      diffuse: 1.2,
+      mapSamples: 16000,
+      mapBrightness: 6,
+      baseColor: [0.3, 0.3, 0.3],
+      markerColor: [0.1, 0.8, 1],
+      glowColor: [0.2, 0.2, 0.2],
+      markers: [],
+       onRender: (state) => {
+        // This prevents rotation while dragging
+        if (!pointerInteracting.current) {
+          // Called on every animation frame.
+          // `state` will be an empty object, return updated params.
+          phi += 0.005
         }
+        state.phi = phi + pointerInteractionMovement.current;
+        state.width = width * 2;
+        state.height = width * 2;
+      }
+    });
 
-        let particles: Particle[] = [];
-        const init = () => {
-            particles = [];
-            const numberOfParticles = (width * height) / 9000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                particles.push(new Particle());
-            }
-        };
+    setTimeout(() => canvasRef.current!.style.opacity = '1');
 
-        const connect = () => {
-            let opacityValue = 1;
-            for(let a = 0; a < particles.length; a++) {
-                for(let b = a; b < particles.length; b++) {
-                    let distance = ((particles[a].x - particles[b].x) * (particles[a].x - particles[b].x))
-                                 + ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
-                    if (distance < (width/7) * (height/7)) {
-                        opacityValue = 1 - (distance/20000);
-                        ctx!.strokeStyle = `hsla(var(--primary), ${opacityValue})`;
-                        ctx!.beginPath();
-                        ctx!.moveTo(particles[a].x, particles[a].y);
-                        ctx!.lineTo(particles[b].x, particles[b].y);
-                        ctx!.stroke();
-                    }
-                }
-            }
+    return () => globe.destroy();
+  }, []);
+
+  return <canvas 
+    ref={canvasRef} 
+    onPointerDown={(e) => {
+      // @ts-ignore
+      pointerInteracting.current = e.clientX - pointerInteractionMovement.current;
+      canvasRef.current!.style.cursor = 'grabbing';
+    }}
+    onPointerUp={() => {
+      pointerInteracting.current = null;
+      canvasRef.current!.style.cursor = 'grab';
+    }}
+    onPointerOut={() => {
+      pointerInteracting.current = null;
+      canvasRef.current!.style.cursor = 'grab';
+    }}
+    onMouseMove={(e) => {
+      if (pointerInteracting.current !== null) {
+        const delta = e.clientX - pointerInteracting.current;
+        // @ts-ignore
+        pointerInteractionMovement.current = delta / 200;
+      }
+    }}
+    onTouchMove={(e) => {
+        if (pointerInteracting.current !== null && e.touches[0]) {
+            const delta = e.touches[0].clientX - pointerInteracting.current;
+             // @ts-ignore
+            pointerInteractionMovement.current = delta / 100;
         }
-
-        const animate = () => {
-            if (!ctx) return;
-            ctx.clearRect(0, 0, width, height);
-            for (const particle of particles) {
-                particle.update();
-                particle.draw();
-            }
-            connect();
-            requestAnimationFrame(animate);
-        };
-
-        init();
-        animate();
-
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-30" />;
+    }}
+    style={{
+      width: '100%',
+      height: '100%',
+      contain: 'layout paint size',
+      opacity: 0,
+      transition: 'opacity 1s ease',
+      cursor: 'grab'
+    }}
+  />;
 };
