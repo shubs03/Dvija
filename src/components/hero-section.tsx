@@ -108,15 +108,16 @@ const BackgroundAnimation = () => {
     let mouseX = 0;
     let mouseY = 0;
 
-    document.addEventListener('mousemove', (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
         mouseX = e.clientX - width/2;
         mouseY = e.clientY - height/2;
-    })
+    };
+    document.addEventListener('mousemove', handleMouseMove);
 
 
     let animationFrameId: number;
     const animate = () => {
-      ctx.fillStyle = 'hsl(var(--background))';
+      ctx.fillStyle = 'hsl(222.2 84% 4.9%)';
       ctx.fillRect(0, 0, width, height);
       ctx.save();
       ctx.translate(width / 2, height / 2);
@@ -133,8 +134,8 @@ const BackgroundAnimation = () => {
         }
         
         const k = 128.0 / star.z;
-        const px = star.x * k - mouseX / 8;
-        const py = star.y * k - mouseY / 8;
+        const px = star.x * k + mouseX / 8;
+        const py = star.y * k + mouseY / 8;
 
         if (px >= -width/2 && px <= width/2 && py >= -height/2 && py <= height/2) {
           const size = (1 - star.z / width) * 4;
@@ -153,6 +154,7 @@ const BackgroundAnimation = () => {
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      document.removeEventListener('mousemove', handleMouseMove);
       window.onresize = null;
     };
   }, []);
