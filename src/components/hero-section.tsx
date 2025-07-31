@@ -75,89 +75,87 @@ export function HeroSection() {
 
 const BackgroundAnimation = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [stars, setStars] = useState<any[]>([]);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-
-  const numStars = 1000;
-  const starRadius = '0.' + Math.floor(Math.random() * 9) + 1;
-  
-  let speed = 2;
-
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    const context = canvas.getContext('2d');
-    if (!context) return;
-    
-    const onResize = () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', onResize);
-    onResize();
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
 
-    let tempStars: any[] = [];
+    window.onresize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    };
+
+    const stars: {x: number, y: number, z: number}[] = [];
+    const numStars = 800;
+
     for (let i = 0; i < numStars; i++) {
-      tempStars.push({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        z: Math.random() * window.innerWidth
-      });
+      stars[i] = {
+        x: Math.random() * width - width / 2,
+        y: Math.random() * height - height / 2,
+        z: Math.random() * width,
+      };
     }
-    setStars(tempStars);
+    
+    let mouseX = 0;
+    let mouseY = 0;
 
-    const handleMouseMove = (e: MouseEvent) => {
-        setMouse({x: e.clientX, y: e.clientY});
-    }
-    window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX - width/2;
+        mouseY = e.clientY - height/2;
+    })
+
 
     let animationFrameId: number;
     const animate = () => {
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-        const focalLength = canvas.width;
+      ctx.fillStyle = 'hsl(var(--background))';
+      ctx.fillRect(0, 0, width, height);
+      ctx.save();
+      ctx.translate(width / 2, height / 2);
+      
+      const speed = 0.5;
+
+      stars.forEach(star => {
+        star.z -= speed;
+
+        if (star.z <= 0) {
+          star.x = Math.random() * width - width / 2;
+          star.y = Math.random() * height - height / 2;
+          star.z = width;
+        }
         
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        
-        tempStars.forEach(star => {
-            star.z -= speed;
+        const k = 128.0 / star.z;
+        const px = star.x * k - mouseX / 8;
+        const py = star.y * k - mouseY / 8;
 
-            if (star.z <= 0) {
-                star.x = Math.random() * canvas.width;
-                star.y = Math.random() * canvas.height;
-                star.z = canvas.width;
-            }
-
-            const scale = focalLength / (focalLength + star.z);
-            const r = parseFloat(starRadius) * scale;
-            const x = (star.x - centerX) * scale + centerX;
-            const y = (star.y - centerY) * scale + centerY;
-
-            // Interaction with mouse
-            const dx = x - mouse.x;
-            const dy = y - mouse.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            const opacity = Math.max(0, 1 - distance / 300);
-
-            context.beginPath();
-            context.arc(x, y, r, 0, Math.PI * 2);
-            context.fillStyle = `hsla(var(--primary), ${opacity})`;
-            context.fill();
-        })
-        animationFrameId = requestAnimationFrame(animate);
+        if (px >= -width/2 && px <= width/2 && py >= -height/2 && py <= height/2) {
+          const size = (1 - star.z / width) * 4;
+          const shade = parseInt((1 - star.z / width) * 255 as any);
+          ctx.fillStyle = `rgb(${shade},${shade},${shade})`;
+          ctx.beginPath();
+          ctx.arc(px, py, size/2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+      ctx.restore();
+      animationFrameId = requestAnimationFrame(animate);
     }
 
     animate();
 
     return () => {
-      window.removeEventListener('resize', onResize);
-      window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
+      window.onresize = null;
     };
-  }, [mouse]);
+  }, []);
 
   return <canvas 
     ref={canvasRef} 
