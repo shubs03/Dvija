@@ -21,7 +21,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">
               Solutions for Every Scale
             </h2>
-            <p className="mt-4 text-lg text-center text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-4 text-lg text-center text-muted-foreground max-w-3xl mx-auto">
               We provide the tools and expertise to help you build, deploy, and
               manage applications with ease.
             </p>
@@ -33,14 +33,18 @@ export default function Home() {
                 key={solution.title}
                 className={`fade-in-up animate-delay-${index * 200}`}
               >
-                <Card className="bg-card p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 h-full border-transparent bg-gradient-to-br from-secondary/50 to-secondary/20 hover:border-primary/30">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 text-primary">
-                    <solution.icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="mt-6 text-xl font-bold">{solution.title}</h3>
-                  <p className="mt-2 text-muted-foreground">
-                    {solution.description}
-                  </p>
+                <Card className="h-full border-transparent bg-gradient-to-br from-card to-secondary/20 hover:border-primary/30 hover:shadow-xl transition-all duration-300">
+                  <CardHeader>
+                    <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10 text-primary">
+                      <solution.icon className="h-6 w-6" />
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <h3 className="text-xl font-bold">{solution.title}</h3>
+                    <p className="mt-2 text-muted-foreground">
+                      {solution.description}
+                    </p>
+                  </CardContent>
                 </Card>
               </AnimateOnScroll>
             ))}
@@ -48,13 +52,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="products" className="py-20 lg:py-32 bg-secondary/30">
+      <section id="products" className="py-20 lg:py-32 bg-secondary/50">
         <div className="container mx-auto px-4">
           <AnimateOnScroll>
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">
               Explore Our Flagship Products
             </h2>
-            <p className="mt-4 text-lg text-center text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-4 text-lg text-center text-muted-foreground max-w-3xl mx-auto">
               Powerful, reliable, and easy-to-use solutions designed to solve
               your most complex challenges.
             </p>
@@ -85,7 +89,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimateOnScroll className="fade-in-up">
-              <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl group">
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl group">
                  <Image
                   src="https://placehold.co/600x400.png"
                   alt="ProEdge Innovations Team"
@@ -101,12 +105,12 @@ export default function Home() {
               <h2 className="text-3xl font-bold tracking-tight mt-2 sm:text-4xl">
                 Driving Innovation, Building Futures
               </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
+              <p className="mt-6 text-lg text-muted-foreground">
                 At ProEdge Innovations, we are dedicated to pushing the
                 boundaries of technology. Our journey is one of constant
                 learning, building, and delivering excellence for our partners.
               </p>
-              <ul className="mt-6 space-y-4">
+              <ul className="mt-8 space-y-4">
                 <li className="flex items-start">
                   <CheckCircle className="h-6 w-6 text-accent mt-1 mr-4 shrink-0" />
                   <span>
@@ -122,7 +126,7 @@ export default function Home() {
                   </span>
                 </li>
               </ul>
-              <Button asChild size="lg" className="mt-8">
+              <Button asChild size="lg" className="mt-10">
                 <Link href="/about">
                   Learn More About Us <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>

@@ -19,9 +19,9 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 group hover:shadow-xl hover:-translate-y-2 border-transparent bg-gradient-to-br from-card to-secondary/20 hover:border-primary/30">
-      <CardHeader>
-        <div className="relative aspect-video rounded-md overflow-hidden mb-4">
+    <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 group hover:shadow-xl hover:-translate-y-2 border">
+      <CardHeader className="p-0">
+        <div className="relative aspect-video overflow-hidden">
             <Image 
                 src={product.image}
                 alt={product.name}
@@ -29,20 +29,20 @@ export function ProductCard({ product }: ProductCardProps) {
                 data-ai-hint={`${product.category} technology`}
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10"></div>
+             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/0"></div>
+              <Badge variant="secondary" className="absolute top-4 right-4">{product.category}</Badge>
         </div>
-        <Badge variant="secondary" className="w-fit">{product.category}</Badge>
-        <CardTitle className="pt-2">{product.name}</CardTitle>
-        <CardDescription>{product.tagline}</CardDescription>
       </CardHeader>
-      <CardContent className="flex-grow">
-        <p className="text-sm text-muted-foreground line-clamp-3">
+      <CardContent className="flex flex-col flex-grow p-6">
+        <CardTitle>{product.name}</CardTitle>
+        <CardDescription className="mt-2">{product.tagline}</CardDescription>
+        <p className="text-sm text-muted-foreground line-clamp-3 mt-4 flex-grow">
           {product.description}
         </p>
       </CardContent>
-      <CardFooter>
-        <Button asChild className="w-full">
-          <Link href={`/products/${product.slug}`}>Learn More <ArrowRight className="ml-2 h-4 w-4" /></Link>
+      <CardFooter className="p-6 pt-0">
+        <Button asChild className="w-full mt-4">
+          <Link href={`/products/${product.slug}`}>Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
         </Button>
       </CardFooter>
     </Card>

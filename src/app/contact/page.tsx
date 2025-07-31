@@ -18,55 +18,56 @@ const contactDetails = [
 export default function ContactPage() {
   return (
     <>
-      <section className="py-20 lg:py-32 bg-secondary/50">
+      <section className="py-24 lg:py-32 bg-secondary/50">
         <div className="container mx-auto px-4 text-center">
           <AnimateOnScroll>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
               Contact Us
             </h1>
-            <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto">
               Have a question or want to work with us? We’d love to hear from you.
             </p>
           </AnimateOnScroll>
         </div>
       </section>
 
-      <section className="py-20 lg:py-24">
+      <section className="py-24 lg:py-32">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
             <AnimateOnScroll className="fade-in-up">
               <h2 className="text-3xl font-bold tracking-tight">Get in Touch</h2>
-              <p className="mt-4 text-muted-foreground">
+              <p className="mt-4 text-lg text-muted-foreground">
                 Fill out the form and our team will get back to you within 24 hours.
                 For immediate assistance, please use the contact details provided.
               </p>
-              <div className="mt-8 space-y-6">
+              <div className="mt-10 space-y-8">
                 {contactDetails.map((detail) => (
                   <div key={detail.title} className="flex items-start">
-                    <div className="bg-primary/10 rounded-md p-3">
+                    <div className="bg-primary/10 rounded-lg p-4">
                       <detail.icon className="h-6 w-6 text-primary" />
                     </div>
                     <div className="ml-4">
                       <h3 className="text-lg font-semibold">{detail.title}</h3>
                       {detail.href ? (
-                         <a href={detail.href} className="text-muted-foreground hover:text-primary transition-colors">
+                         <a href={detail.href} className="text-muted-foreground hover:text-primary transition-colors text-base">
                             {detail.value}
                         </a>
                       ) : (
-                        <p className="text-muted-foreground">{detail.value}</p>
+                        <p className="text-muted-foreground text-base">{detail.value}</p>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="mt-8 relative aspect-video rounded-lg overflow-hidden shadow-md">
+              <div className="mt-12 relative aspect-[4/3] rounded-lg overflow-hidden shadow-md">
                 <Image src="https://placehold.co/600x400.png" alt="Map to office" fill className="object-cover" data-ai-hint="city map" />
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll className="fade-in-up animate-delay-200">
-               <div className="bg-card p-8 rounded-lg shadow-lg">
-                <h2 className="text-3xl font-bold tracking-tight">Send us a Message</h2>
+               <div className="bg-card p-8 rounded-xl shadow-lg border">
+                <h2 className="text-3xl font-bold tracking-tight mb-2">Send us a Message</h2>
+                <p className="text-muted-foreground mb-6">We're excited to hear from you!</p>
                  <ContactForm />
                </div>
             </AnimateOnScroll>
