@@ -9,19 +9,15 @@ export function HeroSection() {
 
   return (
     <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover -z-10"
-        poster="https://placehold.co/1920x1080.png"
-      >
-        <source src="https://studiocdn.prod.web.prod.gcp.firebase.dev/assets/videos/hero-video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div className="absolute inset-0 bg-background/60 dark:bg-background/80 backdrop-blur-sm z-0"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent z-0"></div>
+      <div className="absolute inset-0 -z-20 bg-background"></div>
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(var(--primary),0.5),rgba(255,255,255,0))]"></div>
+        <div className="absolute bottom-[-20%] left-0 right-[-10%] top-0 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(var(--accent),0.4),rgba(255,255,255,0))]"></div>
+         <div className="absolute bottom-0 left-[20%] right-0 top-[10%] h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(var(--primary),0.3),rgba(255,255,255,0))] animate-[float_12s_ease-in-out_infinite]"></div>
+        <div className="absolute bottom-[20%] left-0 right-[20%] top-0 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(var(--accent),0.2),rgba(255,255,255,0))] animate-[float-reverse_10s_ease-in-out_infinite]"></div>
+      </div>
+      <div className="absolute inset-0 bg-background/60 dark:bg-background/80 backdrop-blur-xl z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent z-0"></div>
 
       <div className="container mx-auto px-4 z-10 text-center">
         <AnimateOnScroll className="fade-in-up">
