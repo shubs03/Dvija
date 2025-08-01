@@ -18,7 +18,7 @@ export const products: Product[] = [
       'E-commerce for Beauty Product Sales'
     ],
     useCases: ['Hair Salons & Barbershops', 'Nail Salons & Spas', 'Beauty & Wellness Centers', 'Independent Stylists & Therapists'],
-    image: 'https://placehold.co/600x400.png',
+    image: '/uploads/2149319780.jpg',
     gallery: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
   },
   {
@@ -37,7 +37,7 @@ export const products: Product[] = [
       'Integrated HR & Payroll Module'
     ],
     useCases: ['Wholesale Plant Nurseries', 'Retail Garden Centers', 'Commercial Growers & Farms', 'Landscaping Businesses'],
-    image: 'https://placehold.co/600x400.png',
+    image: '/uploads/farmer-man-showing-cultivated-fresh-salads-agronomist-businesswoman-discussing-agronomy-production-farming-season-rancher-harvesting-organic-green-vegetables-hydroponic-greenhouse.jpg',
     gallery: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
   },
   {
@@ -56,7 +56,7 @@ export const products: Product[] = [
       'Community & Discussion Forums'
     ],
     useCases: ['Students & Lifelong Learners', 'Professional Skill Development', 'Corporate Training Programs', 'Expert Instructors & Coaches'],
-    image: 'https://placehold.co/600x400.png',
+    image: '/uploads/164484.jpg',
     gallery: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
   },
 ];
@@ -70,11 +70,22 @@ export const timeline: TimelineEvent[] = [
 ];
 
 export const team: TeamMember[] = [
-    { name: 'Aarav Sharma', role: 'Founder & CEO', avatar: 'https://placehold.co/400x400.png', bio: 'A visionary leader with a passion for building software that solves real-world problems and empowers entrepreneurs.' },
-    { name: 'Priya Singh', role: 'Chief Technology Officer', avatar: 'https://placehold.co/400x400.png', bio: 'The technical architect behind our platforms, Priya ensures our products are scalable, secure, and reliable.' },
-    { name: 'Rohan Mehta', role: 'VP of Product', avatar: 'https://placehold.co/400x400.png', bio: 'Rohan is dedicated to understanding our customers\' needs and translating them into elegant, user-friendly features.' },
-    { name: 'Anika Gupta', role: 'Head of Customer Success', avatar: 'https://placehold.co/400x400.png', bio: 'Anika leads our support and success teams, ensuring every client has the resources they need to thrive.' },
+  {
+    name: 'Pratiksha Baviskar',
+    role: 'Founder & CEO',
+    avatar: 'https://placehold.co/400x400.png',
+    bio: 'A visionary leader with a passion for building software that solves real-world problems and empowers entrepreneurs.',
+  },
+  {
+    name: 'Priya Singh',
+    role: 'Co-Founder & CTO',
+    avatar: 'https://placehold.co/400x400.png',
+    bio: 'The technical architect behind our platforms, Priya ensures our products are scalable, secure, and reliable.',
+  },
+  { name: 'Rohan Mehta', role: 'VP of Product', avatar: 'https://placehold.co/400x400.png', bio: 'Rohan is dedicated to understanding our customers\' needs and translating them into elegant, user-friendly features.' },
+    { name: 'Anika Gupta', role: 'Head of Customer Success', avatar: 'https://placehold.co/400x400.png', bio: 'Anika leads our support and success teams, ensuring every client has the resources they need to thrive.' }
 ];
+
 
 export const solutions: Solution[] = [
     {

@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Logo } from './icons';
-import { Github, Twitter, Linkedin } from 'lucide-react';
+import { Github, Twitter, Linkedin, Instagram } from 'lucide-react';
 
 const socialLinks = [
   { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Github, href: '#', label: 'Github' },
+  { icon: Instagram, href: '#', label: 'Instagram' },
   { icon: Linkedin, href: '#', label: 'LinkedIn' },
+
 ];
 
 const productLinks = [
@@ -21,11 +22,11 @@ export function Footer() {
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Link href="/" className="flex items-center gap-2">
-              <Logo className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold">Dvija Softech</span>
+              <img src="/uploads/dvijalogo.jpg" className="h-14 w-auto text-primary" />
+              {/* <span className="text-xl font-bold">Dvija Softech</span> */}
             </Link>
             <p className="mt-4 text-muted-foreground">
-              Intuitive Software for Modern Businesses.
+             We create intuitive, scalable software solutions designed to streamline operations, enhance productivity, and drive growth for today’s fast-moving businesses.
             </p>
             <div className="mt-6 flex space-x-4">
               {socialLinks.map((social) => (

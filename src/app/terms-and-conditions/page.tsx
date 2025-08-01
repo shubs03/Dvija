@@ -15,9 +15,9 @@ export default function TermsAndConditionsPage() {
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-center">
               Terms and Conditions
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto text-center">
+            {/* <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto text-center">
                 Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-            </p>
+            </p> */}
           </AnimateOnScroll>
         </div>
       </section>

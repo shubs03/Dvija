@@ -89,7 +89,7 @@ export default function Home() {
             <AnimateOnScroll className="fade-in-up">
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl group">
                  <Image
-                  src="https://placehold.co/600x450.png"
+                  src="/uploads/2150377185.jpg"
                   alt="Dvija Softech Team Collaboration"
                   data-ai-hint="team collaboration"
                   fill

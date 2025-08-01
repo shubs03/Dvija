@@ -9,9 +9,24 @@ export const metadata: Metadata = {
 };
 
 const contactDetails = [
-  { icon: Mail, title: 'Email', value: 'hello@dvijasoftech.dev', href: 'mailto:hello@dvijasoftech.dev' },
-  { icon: Phone, title: 'Phone', value: '+1 (555) 789-1234', href: 'tel:+15557891234' },
-  { icon: MapPin, title: 'Office', value: '456 Digital Avenue, Innovation Hub, 54321' },
+  {
+    icon: Mail,
+    title: "Email",
+    value: "info@dvijasoftech.com",
+    href: "mailto:info@dvijasoftech.com",
+  },
+  {
+    icon: Phone,
+    title: "Phone",
+    value: "+91 8421581510",
+    href: "8421581510",
+  },
+  {
+    icon: MapPin,
+    title: "Office",
+    value:
+      "02, Bhakti Apartment, near Hotel Rasoi, Suchita Nagar, Mumbai Naka, Nashik, Maharashtra, India - 422001",
+  },
 ];
 
 export default function ContactPage() {
