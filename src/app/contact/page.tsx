@@ -25,7 +25,7 @@ const contactDetails = [
     icon: MapPin,
     title: "Office",
     value:
-      "02, Bhakti Apartment, near Hotel Rasoi, Suchita Nagar, Mumbai Naka, Nashik, Maharashtra, India - 422001",
+      "02, Bhakti Apartment, near Hotel Rasoi, Suchita Nagar, Mumbai Naka, Nashik, Maharashtra, India - 422009",
   },
 ];
 

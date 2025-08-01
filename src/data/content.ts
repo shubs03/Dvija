@@ -19,7 +19,7 @@ export const products: Product[] = [
     ],
     useCases: ['Hair Salons & Barbershops', 'Nail Salons & Spas', 'Beauty & Wellness Centers', 'Independent Stylists & Therapists'],
     image: '/uploads/2149319780.jpg',
-    gallery: ['/uploads/glowvitaapp.jpg', '/uploads/glowvita1.png', '/uploads/glowvitacrm.jpg'],
+    gallery: ['/uploads/glowvitaapp.jpg', '/uploads/glowvita1.png', '/uploads/glowvita22.png', '/uploads/glowvita20.png', '/uploads/glowvita4.png', '/uploads/glowvita16.png', '/uploads/glowvita14.png',"/uploads/crm1.png","/uploads/crm2.png","/uploads/crm3.png","/uploads/crm4.png","/uploads/crm5.png"],
     link: 'https://glowvitasalon.com',
     problems: [
       {
@@ -59,7 +59,7 @@ export const products: Product[] = [
     ],
     useCases: ['Wholesale Plant Nurseries', 'Retail Garden Centers', 'Commercial Growers & Farms', 'Landscaping Businesses'],
     image: '/uploads/farmer-man-showing-cultivated-fresh-salads-agronomist-businesswoman-discussing-agronomy-production-farming-season-rancher-harvesting-organic-green-vegetables-hydroponic-greenhouse.jpg',
-    gallery: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
+    gallery: ['/uploads/nursery1.png', '/uploads/nursery2.png', '/uploads/nursery3.png', '/uploads/nursery4.png', '/uploads/nursery5.png', '/uploads/nursery6.png', '/uploads/nursery7.png', '/uploads/nursery8.png', '/uploads/nursery9.png', '/uploads/nursery10.png','/uploads/nursery11.png','/uploads/nursery12.png','/uploads/nursery13.png','/uploads/nursery14.png','/uploads/nursery15.png','/uploads/nursery16.png','/uploads/nursery17.png'],
     link: '/contact',
     problems: [
         {
@@ -99,7 +99,7 @@ export const products: Product[] = [
     ],
     useCases: ['Students & Lifelong Learners', 'Professional Skill Development', 'Corporate Training Programs', 'Expert Instructors & Coaches'],
     image: '/uploads/164484.jpg',
-    gallery: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
+    gallery: ['/uploads/edu1.jpg', '/uploads/edu2.jpg', '/uploads/edu3.jpg', '/uploads/edu4.jpg', '/uploads/edu5.jpg'],
     link: 'https://paarshedu.com',
     problems: [
         {
