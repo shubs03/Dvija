@@ -61,7 +61,7 @@ export default function ProductDetailPage({ params }: Props) {
               <p className="mt-6 text-xl text-muted-foreground">{product.tagline}</p>
               <p className="mt-8 text-lg text-foreground/80">{product.description}</p>
               <Button asChild size="lg" className="mt-10">
-                <Link href="/contact">Request a Demo</Link>
+                <Link href={product.link}>Request a Demo</Link>
               </Button>
             </AnimateOnScroll>
             <AnimateOnScroll className="fade-in-up animate-delay-200">

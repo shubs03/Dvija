@@ -20,6 +20,7 @@ export const products: Product[] = [
     useCases: ['Hair Salons & Barbershops', 'Nail Salons & Spas', 'Beauty & Wellness Centers', 'Independent Stylists & Therapists'],
     image: '/uploads/2149319780.jpg',
     gallery: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
+    link: 'https://glowvitasalon.com'
   },
   {
     id: 2,
@@ -39,6 +40,7 @@ export const products: Product[] = [
     useCases: ['Wholesale Plant Nurseries', 'Retail Garden Centers', 'Commercial Growers & Farms', 'Landscaping Businesses'],
     image: '/uploads/farmer-man-showing-cultivated-fresh-salads-agronomist-businesswoman-discussing-agronomy-production-farming-season-rancher-harvesting-organic-green-vegetables-hydroponic-greenhouse.jpg',
     gallery: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
+    link: '/contact'
   },
   {
     id: 3,
@@ -58,6 +60,7 @@ export const products: Product[] = [
     useCases: ['Students & Lifelong Learners', 'Professional Skill Development', 'Corporate Training Programs', 'Expert Instructors & Coaches'],
     image: '/uploads/164484.jpg',
     gallery: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
+    link: 'https://paarshedu.com'
   },
 ];
 
