@@ -9,6 +9,8 @@ export interface Product {
   useCases: string[];
   image: string;
   gallery: string[];
+  problems: { title: string; description: string }[];
+  solutions: { title: string; description: string }[];
 }
 
 export interface TimelineEvent {

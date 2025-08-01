@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { AnimateOnScroll } from '@/components/animate-on-scroll';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle, ArrowRight, Lightbulb, Check } from 'lucide-react';
 import Link from 'next/link';
 import {
   Carousel,
@@ -14,7 +14,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Card } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 type Props = {
   params: { slug: string };
@@ -83,7 +83,58 @@ export default function ProductDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-secondary/50">
+      <section className="py-24 lg:py-32 bg-secondary/30">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <AnimateOnScroll>
+            <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">
+              Addressing Your Core Challenges
+            </h2>
+            <p className="mt-4 text-lg text-center text-muted-foreground max-w-3xl mx-auto">
+              We built {product.name} to solve the specific problems that hold your business back.
+            </p>
+          </AnimateOnScroll>
+          <div className="mt-16 grid lg:grid-cols-2 gap-8">
+            <div className="space-y-8">
+              <h3 className="text-2xl font-bold text-center lg:text-left">The Problems You Face</h3>
+              {product.problems.map((problem, index) => (
+                <AnimateOnScroll key={index} className="fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
+                  <Card className="p-6 bg-background/50 border-destructive/30">
+                    <CardHeader className="flex flex-row items-center gap-4 p-0">
+                      <div className="p-3 bg-destructive/10 rounded-lg">
+                        <Lightbulb className="h-6 w-6 text-destructive" />
+                      </div>
+                      <CardTitle className="text-xl m-0">{problem.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0 mt-4">
+                      <p className="text-muted-foreground">{problem.description}</p>
+                    </CardContent>
+                  </Card>
+                </AnimateOnScroll>
+              ))}
+            </div>
+            <div className="space-y-8">
+               <h3 className="text-2xl font-bold text-center lg:text-left">Our Solutions</h3>
+              {product.solutions.map((solution, index) => (
+                <AnimateOnScroll key={index} className="fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
+                   <Card className="p-6 bg-background/50 border-primary/30">
+                    <CardHeader className="flex flex-row items-center gap-4 p-0">
+                      <div className="p-3 bg-primary/10 rounded-lg">
+                        <Check className="h-6 w-6 text-primary" />
+                      </div>
+                      <CardTitle className="text-xl m-0">{solution.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0 mt-4">
+                      <p className="text-muted-foreground">{solution.description}</p>
+                    </CardContent>
+                  </Card>
+                </AnimateOnScroll>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 lg:py-32">
         <div className="container mx-auto px-4 max-w-7xl">
             <div className="grid lg:grid-cols-2 gap-16">
                 <AnimateOnScroll className="fade-in-up">
@@ -112,7 +163,7 @@ export default function ProductDetailPage({ params }: Props) {
         </div>
       </section>
 
-       <section className="py-24 lg:py-32">
+       <section className="py-24 lg:py-32 bg-secondary/30">
         <div className="container mx-auto px-4 max-w-7xl">
             <AnimateOnScroll>
                 <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">Explore Other Products</h2>
@@ -121,7 +172,7 @@ export default function ProductDetailPage({ params }: Props) {
                 {otherProducts.map((p, index) => (
                     <AnimateOnScroll key={p.id} className={`fade-in-up animate-delay-${index * 200}`}>
                         <Link href={`/products/${p.slug}`} className="block group">
-                          <Card className="p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 group-hover:-translate-y-1 h-full bg-secondary/30">
+                          <Card className="p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 group-hover:-translate-y-1 h-full bg-background/50">
                             <h3 className="font-bold text-xl">{p.name}</h3>
                             <p className="mt-2 text-muted-foreground">{p.tagline}</p>
                             <span className="mt-6 inline-flex items-center text-primary font-semibold">

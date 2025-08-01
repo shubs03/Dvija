@@ -20,6 +20,26 @@ export const products: Product[] = [
     useCases: ['Hair Salons & Barbershops', 'Nail Salons & Spas', 'Beauty & Wellness Centers', 'Independent Stylists & Therapists'],
     image: '/uploads/2149319780.jpg',
     gallery: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
+    problems: [
+      {
+        title: 'Manual Operations in Salons',
+        description: 'Businesses often struggle with providing timely and efficient customer support, especially outside regular working hours. Manual handling of customer inquiries can lead to slow response times and increased customer dissatisfaction.'
+      },
+      {
+        title: 'Limited Support for Freelancers',
+        description: 'Independent beauty professionals lack the tools to manage bookings, sell products, and market their services without a physical salon setup.'
+      }
+    ],
+    solutions: [
+      {
+        title: 'All-in-One Management Software',
+        description: 'Digitizes appointments, billing, inventory, and staff operations for salons and spas, reducing manual errors and improving efficiency.'
+      },
+      {
+        title: 'Empowerment for Small Salons',
+        description: 'Caters to beauty professionals without physical setups by offering mobile booking, product sales, and online appointment features.'
+      }
+    ]
   },
   {
     id: 2,
@@ -39,6 +59,26 @@ export const products: Product[] = [
     useCases: ['Wholesale Plant Nurseries', 'Retail Garden Centers', 'Commercial Growers & Farms', 'Landscaping Businesses'],
     image: '/uploads/farmer-man-showing-cultivated-fresh-salads-agronomist-businesswoman-discussing-agronomy-production-farming-season-rancher-harvesting-organic-green-vegetables-hydroponic-greenhouse.jpg',
     gallery: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
+    problems: [
+        {
+            title: 'Inefficient Inventory Tracking',
+            description: 'Nurseries struggle with manual inventory counts, leading to stock discrepancies, lost sales, and poor planning for seasonal demand.'
+        },
+        {
+            title: 'Complex Operational Management',
+            description: 'Managing sowing schedules, staff tasks, supplier orders, and billing through spreadsheets is time-consuming and prone to error.'
+        }
+    ],
+    solutions: [
+        {
+            title: 'Real-Time Inventory Control',
+            description: 'Our system provides live, accurate stock levels, automates purchase orders, and helps you forecast inventory needs with precision.'
+        },
+        {
+            title: 'Unified Nursery ERP',
+            description: 'A centralized dashboard for owners and a dedicated panel for staff to manage sowing, tasks, billing, and HR seamlessly.'
+        }
+    ]
   },
   {
     id: 3,
@@ -58,6 +98,26 @@ export const products: Product[] = [
     useCases: ['Students & Lifelong Learners', 'Professional Skill Development', 'Corporate Training Programs', 'Expert Instructors & Coaches'],
     image: '/uploads/164484.jpg',
     gallery: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
+    problems: [
+        {
+            title: 'Fragmented Education Tools',
+            description: 'Educators and institutes lack a unified platform for delivering courses, tracking performance, and engaging students, resulting in a disjointed learning experience.'
+        },
+        {
+            title: 'Limited Digital Adoption',
+            description: 'Both education and service sectors face low technology penetration in smaller cities, leaving a large market underserved and unable to scale efficiently.'
+        }
+    ],
+    solutions: [
+        {
+            title: 'Unified Learning Platform (Paarsh EDU)',
+            description: 'Enables educators and institutions to create and manage video courses, assignments, quizzes, certificates, and communication—all in one place.'
+        },
+        {
+            title: 'Scalable & Localized Technology',
+            description: 'Affordable pricing, regional language support, and cloud-based deployment make our platforms accessible and scalable across India.'
+        }
+    ]
   },
 ];
 
