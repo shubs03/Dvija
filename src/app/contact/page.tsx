@@ -2,7 +2,6 @@ import { ContactForm } from "@/components/contact-form";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import { Mail, Phone, MapPin } from "lucide-react";
 import type { Metadata } from 'next';
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -19,7 +18,7 @@ export default function ContactPage() {
   return (
     <>
       <section className="py-24 lg:py-32 bg-secondary/50">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 text-center max-w-7xl">
           <AnimateOnScroll>
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
               Contact Us
@@ -32,7 +31,7 @@ export default function ContactPage() {
       </section>
 
       <section className="py-24 lg:py-32">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <AnimateOnScroll className="fade-in-up">
               <h2 className="text-3xl font-bold tracking-tight">Get in Touch</h2>
@@ -58,9 +57,6 @@ export default function ContactPage() {
                     </div>
                   </div>
                 ))}
-              </div>
-              <div className="mt-12 relative aspect-[4/3] rounded-lg overflow-hidden shadow-md">
-                <Image src="https://placehold.co/600x400.png" alt="Map to office" fill className="object-cover" data-ai-hint="city map" />
               </div>
             </AnimateOnScroll>
 

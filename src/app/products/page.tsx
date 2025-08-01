@@ -23,7 +23,7 @@ export default function ProductsPage() {
   return (
     <>
       <section className="py-24 lg:py-32 bg-secondary/50">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 text-center max-w-7xl">
           <AnimateOnScroll>
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
               Our Products
@@ -37,7 +37,7 @@ export default function ProductsPage() {
       </section>
       
       <section className="py-24 lg:py-32">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           <AnimateOnScroll>
             <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
               <div className="flex justify-center flex-wrap gap-2">

@@ -16,7 +16,7 @@ export default function Home() {
       <HeroSection />
 
       <section id="solutions" className="py-20 lg:py-32 bg-secondary/30">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           <AnimateOnScroll>
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">
               Solutions for Thriving Businesses
@@ -52,7 +52,7 @@ export default function Home() {
       </section>
 
       <section id="products" className="py-20 lg:py-32">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           <AnimateOnScroll>
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">
               Explore Our Flagship Products
@@ -84,7 +84,7 @@ export default function Home() {
       </section>
 
       <section id="about-preview" className="py-20 lg:py-32 bg-secondary/30">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimateOnScroll className="fade-in-up">
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl group">
@@ -108,13 +108,13 @@ export default function Home() {
               </p>
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start">
-                  <CheckCircle className="h-6 w-6 text-accent mt-1 mr-4 shrink-0" />
+                  <CheckCircle className="h-6 w-6 text-primary mt-1 mr-4 shrink-0" />
                   <span>
                     <strong>Industry-Specific Solutions:</strong> We build tools that are perfectly tailored to the unique workflows of your business.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="h-6 w-6 text-accent mt-1 mr-4 shrink-0" />
+                  <CheckCircle className="h-6 w-6 text-primary mt-1 mr-4 shrink-0" />
                   <span>
                     <strong>User-Centric Design:</strong> We are committed to creating software that is easy to learn, efficient to use, and a pleasure to interact with.
                   </span>

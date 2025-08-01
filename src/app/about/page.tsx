@@ -3,7 +3,7 @@ import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { team } from "@/data/content";
-import { Building, Target, Users } from "lucide-react";
+import { Building, Target, Users, Puzzle, Rocket, BotMessageSquare } from "lucide-react";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function AboutPage() {
   return (
     <>
       <section className="py-24 lg:py-32 bg-secondary/50">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 text-center max-w-7xl">
           <AnimateOnScroll>
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
               About Dvija Softech
@@ -29,7 +29,7 @@ export default function AboutPage() {
       </section>
 
       <section className="py-24 lg:py-32">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
             <div className="grid md:grid-cols-3 gap-8">
                 <AnimateOnScroll className="fade-in-up">
                     <Card className="text-center h-full p-6">
@@ -73,9 +73,60 @@ export default function AboutPage() {
             </div>
         </div>
       </section>
-
+      
       <section className="py-24 lg:py-32 bg-secondary/50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-7xl">
+           <AnimateOnScroll>
+            <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">
+              How We Work
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground text-center max-w-3xl mx-auto">
+              Our development process is transparent, collaborative, and focused on delivering results that exceed expectations.
+            </p>
+          </AnimateOnScroll>
+          <div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+              <AnimateOnScroll className="fade-in-up">
+                <Card className="text-center h-full p-6">
+                  <CardHeader>
+                    <div className="mx-auto bg-primary/10 rounded-xl p-4 w-fit"><Puzzle className="h-8 w-8 text-primary" /></div>
+                    <CardTitle className="mt-4">1. Discovery</CardTitle>
+                  </CardHeader>
+                  <CardContent><p className="text-muted-foreground">We begin by understanding your unique challenges and goals to ensure our solution aligns perfectly with your vision.</p></CardContent>
+                </Card>
+              </AnimateOnScroll>
+               <AnimateOnScroll className="fade-in-up animate-delay-200">
+                <Card className="text-center h-full p-6">
+                  <CardHeader>
+                    <div className="mx-auto bg-primary/10 rounded-xl p-4 w-fit"><Rocket className="h-8 w-8 text-primary" /></div>
+                    <CardTitle className="mt-4">2. Design & Develop</CardTitle>
+                  </CardHeader>
+                  <CardContent><p className="text-muted-foreground">Our team designs a user-centric prototype and develops a robust, scalable architecture tailored to your needs.</p></CardContent>
+                </Card>
+              </AnimateOnScroll>
+              <AnimateOnScroll className="fade-in-up animate-delay-400">
+                <Card className="text-center h-full p-6">
+                  <CardHeader>
+                    <div className="mx-auto bg-primary/10 rounded-xl p-4 w-fit"><BotMessageSquare className="h-8 w-8 text-primary" /></div>
+                    <CardTitle className="mt-4">3. Deploy & Support</CardTitle>
+                  </CardHeader>
+                  <CardContent><p className="text-muted-foreground">We handle seamless deployment and provide ongoing support to ensure your software runs smoothly and efficiently.</p></CardContent>
+                </Card>
+              </AnimateOnScroll>
+              <AnimateOnScroll className="fade-in-up animate-delay-600">
+                <Card className="text-center h-full p-6">
+                  <CardHeader>
+                    <div className="mx-auto bg-primary/10 rounded-xl p-4 w-fit"><Users className="h-8 w-8 text-primary" /></div>
+                    <CardTitle className="mt-4">4. Iterate</CardTitle>
+                  </CardHeader>
+                  <CardContent><p className="text-muted-foreground">We believe in continuous improvement, gathering feedback to enhance and evolve your solution over time.</p></CardContent>
+                </Card>
+              </AnimateOnScroll>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 lg:py-32">
+        <div className="container mx-auto px-4 max-w-7xl">
           <AnimateOnScroll>
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">
               Our Journey
@@ -90,8 +141,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32">
-        <div className="container mx-auto px-4">
+      <section className="py-24 lg:py-32 bg-secondary/50">
+        <div className="container mx-auto px-4 max-w-7xl">
           <AnimateOnScroll>
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">
               Meet the Leadership
@@ -103,9 +154,9 @@ export default function AboutPage() {
           <div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {team.map((member, index) => (
               <AnimateOnScroll key={member.name} className={`fade-in-up animate-delay-${index * 200}`}>
-                <Card className="text-center border-0 shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
+                <Card className="text-center border-0 shadow-lg hover:shadow-primary/20 transition-shadow duration-300 bg-secondary/30">
                   <CardContent className="pt-8">
-                    <Avatar className="h-28 w-28 mx-auto mb-6 ring-4 ring-secondary">
+                    <Avatar className="h-28 w-28 mx-auto mb-6 ring-4 ring-background">
                       <AvatarImage src={member.avatar} alt={member.name} data-ai-hint="professional headshot" />
                       <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
                     </Avatar>

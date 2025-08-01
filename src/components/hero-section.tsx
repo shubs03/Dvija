@@ -24,8 +24,8 @@ export function HeroSection() {
   const x = mousePosition.x;
   const y = mousePosition.y;
 
-  const rotateX = y ? (y - window.innerHeight / 2) / (window.innerHeight / 2) * -15 : 0;
-  const rotateY = x ? (x - window.innerWidth / 2) / (window.innerWidth / 2) * 15 : 0;
+  const rotateX = y ? (y - window.innerHeight / 2) / (window.innerHeight / 2) * -10 : 0;
+  const rotateY = x ? (x - window.innerWidth / 2) / (window.innerWidth / 2) * 10 : 0;
   
   return (
     <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-background">
@@ -33,7 +33,7 @@ export function HeroSection() {
         <BackgroundAnimation />
       </div>
       
-      <div className="container mx-auto px-4 z-10 text-center">
+      <div className="container mx-auto px-4 z-10 text-center max-w-7xl">
         <AnimateOnScroll className="fade-in-up">
            <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70"
             style={{ 

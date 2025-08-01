@@ -17,7 +17,7 @@ const productLinks = [
 export function Footer() {
   return (
     <footer className="bg-secondary/50">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 max-w-7xl">
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Link href="/" className="flex items-center gap-2">

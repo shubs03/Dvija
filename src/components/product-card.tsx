@@ -19,7 +19,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 group hover:shadow-xl hover:-translate-y-2 border">
+    <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 group hover:shadow-xl hover:-translate-y-2 border bg-secondary/30">
       <CardHeader className="p-0">
         <div className="relative aspect-video overflow-hidden">
             <Image 
@@ -35,7 +35,7 @@ export function ProductCard({ product }: ProductCardProps) {
       </CardHeader>
       <CardContent className="flex flex-col flex-grow p-6">
         <CardTitle>{product.name}</CardTitle>
-        <CardDescription className="mt-2">{product.tagline}</CardDescription>
+        <CardDescription className="mt-2 text-primary">{product.tagline}</CardDescription>
         <p className="text-sm text-muted-foreground line-clamp-3 mt-4 flex-grow">
           {product.description}
         </p>
