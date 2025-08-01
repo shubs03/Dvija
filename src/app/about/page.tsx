@@ -1,4 +1,3 @@
-import { AnimatedTimeline } from "@/components/animated-timeline";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -126,22 +125,6 @@ export default function AboutPage() {
       </section>
 
       <section className="py-24 lg:py-32">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <AnimateOnScroll>
-            <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">
-              Our Journey
-            </h2>
-            <p className="mt-6 text-lg text-muted-foreground text-center max-w-3xl mx-auto">
-              From a single idea to a suite of powerful products, our journey is one of passion and perseverance.
-            </p>
-          </AnimateOnScroll>
-          <div className="mt-20">
-            <AnimatedTimeline />
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 lg:py-32 bg-secondary/50">
         <div className="container mx-auto px-4 max-w-7xl">
           <AnimateOnScroll>
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">

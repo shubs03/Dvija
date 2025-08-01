@@ -36,7 +36,7 @@ export function Footer() {
               ))}
             </div>
           </div>
-          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
             <div>
               <h3 className="font-semibold">Products</h3>
               <ul className="mt-4 space-y-2">
@@ -51,13 +51,6 @@ export function Footer() {
               <ul className="mt-4 space-y-2">
                 <li><Link href="/about" className="text-muted-foreground hover:text-primary">About Us</Link></li>
                 <li><Link href="/contact" className="text-muted-foreground hover:text-primary">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold">Resources</h3>
-              <ul className="mt-4 space-y-2">
-                 <li><Link href="#" className="text-muted-foreground hover:text-primary">Blog</Link></li>
-                 <li><Link href="#" className="text-muted-foreground hover:text-primary">Documentation</Link></li>
               </ul>
             </div>
             <div>
