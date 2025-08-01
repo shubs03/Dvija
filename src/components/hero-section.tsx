@@ -41,14 +41,14 @@ export function HeroSection() {
               transition: 'transform 0.3s ease-out'
              }}
           >
-            Dvija Softech
+            Intuitive Software for Modern Businesses
           </h1>
         </AnimateOnScroll>
         <AnimateOnScroll className="fade-in-up animate-delay-200">
           <p
             className="mt-6 max-w-3xl mx-auto text-lg text-foreground/80 sm:text-xl"
           >
-           We build intuitive software solutions that empower businesses in the service, agriculture, and education sectors to achieve new heights.
+           We build powerful, intuitive software solutions that empower businesses in the service, agriculture, and education sectors to achieve new heights of success and efficiency.
           </p>
         </AnimateOnScroll>
         <AnimateOnScroll className="fade-in-up animate-delay-400">
