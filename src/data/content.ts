@@ -134,20 +134,31 @@ export const timeline: TimelineEvent[] = [
 
 export const team: TeamMember[] = [
   {
-    name: 'Pratiksha Baviskar',
+    name: 'Pratiksha Baviskar', 
     role: 'Founder & CEO',
     avatar: 'https://placehold.co/400x400.png',
     bio: 'A visionary leader with a passion for building software that solves real-world problems and empowers entrepreneurs.',
   },
   {
-    name: 'Priya Singh',
-    role: 'Co-Founder & CTO',
+    name: 'kalpana Pagare',
+    role: 'Co-Founder',
     avatar: 'https://placehold.co/400x400.png',
-    bio: 'The technical architect behind our platforms, Priya ensures our products are scalable, secure, and reliable.',
+    bio: 'Kalpana drives our vision forward with sharp strategy and a deep passion for impactful digital solutions.',
   },
-  { name: 'Rohan Mehta', role: 'VP of Product', avatar: 'https://placehold.co/400x400.png', bio: 'Rohan is dedicated to understanding our customers\' needs and translating them into elegant, user-friendly features.' },
-    { name: 'Anika Gupta', role: 'Head of Customer Success', avatar: 'https://placehold.co/400x400.png', bio: 'Anika leads our support and success teams, ensuring every client has the resources they need to thrive.' }
+  {
+    name: 'Tushar Pagare',
+    role: 'CTO',
+    avatar: 'https://placehold.co/400x400.png',
+    bio: 'The technical architect behind our platforms, Tushar ensures our products are scalable, secure, and reliable.',
+  },
+  {
+    name: 'Rupali Gaikwad',
+    role: 'Head of Customer Success',
+    avatar: 'https://placehold.co/400x400.png',
+    bio: 'Rupali leads our support and success teams, ensuring every client has the resources they need to thrive.',
+  }
 ];
+
 
 
 export const solutions: Solution[] = [
