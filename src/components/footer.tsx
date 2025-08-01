@@ -22,7 +22,7 @@ export function Footer() {
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Link href="/" className="flex items-center gap-2">
-              <img src="/uploads/dvijalogo.jpg" className="h-14 w-auto text-primary" />
+              <img src="/uploads/IMG_20250801_113706 copy.png" className="h-14 w-auto text-primary" />
               {/* <span className="text-xl font-bold">Dvija Softech</span> */}
             </Link>
             <p className="mt-4 text-muted-foreground">

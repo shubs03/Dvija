@@ -2,11 +2,34 @@ import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import { ProductCard } from "@/components/product-card";
 import { Button } from "@/components/ui/button";
 import { products, solutions } from "@/data/content";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, ShieldCheck, Zap, Users, InfinityIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { HeroSection } from "@/components/hero-section";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+const whyChooseUsPoints = [
+    {
+        icon: Users,
+        title: "Industry-Focused Solutions",
+        description: "We build tools that are perfectly tailored to the unique workflows of your business."
+    },
+    {
+        icon: ShieldCheck,
+        title: "Scalable and Secure Platforms",
+        description: "Our products are built to grow with your business, ensuring reliability and data security."
+    },
+    {
+        icon: Zap,
+        title: "Automation That Saves Time",
+        description: "We streamline your operations so you can focus on what matters most—your customers."
+    },
+    {
+        icon: InfinityIcon,
+        title: "Continuous Product Innovation",
+        description: "We are committed to constantly improving our software with the latest technology and features."
+    }
+]
 
 export default function Home() {
   const featuredProducts = products.slice(0, 3);
@@ -83,7 +106,35 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about-preview" className="py-20 lg:py-32 bg-secondary/30">
+       <section id="why-choose-us" className="py-20 lg:py-32 bg-secondary/30">
+        <div className="container mx-auto px-4 max-w-7xl">
+            <AnimateOnScroll>
+                <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl">Why Choose Dvija Softech?</h2>
+                <p className="mt-4 text-lg text-center text-muted-foreground max-w-3xl mx-auto">
+                    We are more than just a software provider. We are your partner in growth, committed to your success.
+                </p>
+            </AnimateOnScroll>
+            <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                {whyChooseUsPoints.map((point, index) => (
+                     <AnimateOnScroll key={point.title} className={`fade-in-up animate-delay-${index * 200}`}>
+                        <Card className="text-center h-full p-6 border-0 bg-background/30">
+                             <CardHeader>
+                                <div className="mx-auto bg-primary/10 rounded-xl p-4 w-fit">
+                                    <point.icon className="h-8 w-8 text-primary" />
+                                </div>
+                                <CardTitle className="mt-4 text-xl">{point.title}</CardTitle>
+                             </CardHeader>
+                             <CardContent>
+                                <p className="text-muted-foreground">{point.description}</p>
+                             </CardContent>
+                        </Card>
+                     </AnimateOnScroll>
+                ))}
+            </div>
+        </div>
+       </section>
+
+      <section id="about-preview" className="py-20 lg:py-32">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimateOnScroll className="fade-in-up">
@@ -99,27 +150,13 @@ export default function Home() {
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll className="fade-in-up animate-delay-200">
-              <span className="text-primary font-semibold tracking-wider uppercase">Our Mission</span>
+              <span className="text-primary font-semibold tracking-wider uppercase">About Dvija Softech</span>
               <h2 className="text-3xl font-bold tracking-tight mt-2 sm:text-4xl">
                 Building Software That Empowers
               </h2>
               <p className="mt-6 text-lg text-muted-foreground">
-                At Dvija Softech, our mission is to deliver powerful, intuitive software that streamlines complex operations, enabling our clients in specialized industries to focus on what they do best—providing great service.
+                Dvija Softech Pvt. Ltd. is a tech-driven company offering smart digital solutions for the beauty care, agriculture, and education sectors. Our key products—Glowvita Salon, Nursery Solution, and EducationalSmart Card—help businesses manage bookings and operations, and enable educators to create and deliver online courses. We focus on user-friendly, scalable platforms that simplify business and learning experiences through automation and innovation.
               </p>
-              <ul className="mt-8 space-y-4">
-                <li className="flex items-start">
-                  <CheckCircle className="h-6 w-6 text-primary mt-1 mr-4 shrink-0" />
-                  <span>
-                    <strong>Industry-Specific Solutions:</strong> We build tools that are perfectly tailored to the unique workflows of your business.
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-6 w-6 text-primary mt-1 mr-4 shrink-0" />
-                  <span>
-                    <strong>User-Centric Design:</strong> We are committed to creating software that is easy to learn, efficient to use, and a pleasure to interact with.
-                  </span>
-                </li>
-              </ul>
               <Button asChild size="lg" className="mt-10">
                 <Link href="/about">
                   Learn More About Us <ArrowRight className="ml-2 h-5 w-5" />

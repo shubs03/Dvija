@@ -39,7 +39,7 @@ export function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 max-w-7xl">
         <Link href="/" className="flex items-center gap-2">
-          <img src="/uploads/dvijalogo.jpg" className="h-14 w-auto text-primary" />
+          <img src="/uploads/IMG_20250801_113706 copy.png" className="h-14 w-auto text-primary" />
           {/* <span className="text-xl font-bold tracking-tight">Dvija Softech</span> */}
         </Link>
         

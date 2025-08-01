@@ -10,6 +10,8 @@ export interface Product {
   image: string;
   gallery: string[];
   link: string;
+  problems: { title: string; description: string }[];
+  solutions: { title: string; description: string }[];
 }
 
 export interface TimelineEvent {
