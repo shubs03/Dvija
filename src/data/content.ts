@@ -19,7 +19,7 @@ export const products: Product[] = [
     ],
     useCases: ['Hair Salons & Barbershops', 'Nail Salons & Spas', 'Beauty & Wellness Centers', 'Independent Stylists & Therapists'],
     image: '/uploads/2149319780.jpg',
-    gallery: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
+    gallery: ['/uploads/glowvitaapp.jpg', '/uploads/glowvita1.png', '/uploads/glowvitacrm.jpg'],
     link: 'https://glowvitasalon.com',
     problems: [
       {
