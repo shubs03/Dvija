@@ -18,8 +18,8 @@ const contactDetails = [
   {
     icon: Phone,
     title: "Phone",
-    value: "+91 8421581510",
-    href: "8421581510",
+    value: "+91 9689131527",
+    href: "9689131527",
   },
   {
     icon: MapPin,

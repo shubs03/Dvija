@@ -136,25 +136,25 @@ export const team: TeamMember[] = [
   {
     name: 'Pratiksha Baviskar', 
     role: 'Founder & CEO',
-    avatar: 'https://placehold.co/400x400.png',
+    avatar: '/uploads/Founder.jpg',
     bio: 'A visionary leader with a passion for building software that solves real-world problems and empowers entrepreneurs.',
   },
   {
     name: 'kalpana Pagare',
     role: 'Co-Founder',
-    avatar: 'https://placehold.co/400x400.png',
+    avatar: '/uploads/Cofounder.jpg',
     bio: 'Kalpana drives our vision forward with sharp strategy and a deep passion for impactful digital solutions.',
   },
   {
     name: 'Tushar Pagare',
     role: 'CTO',
-    avatar: 'https://placehold.co/400x400.png',
+    avatar: '/uploads/CTO.jpg',
     bio: 'The technical architect behind our platforms, Tushar ensures our products are scalable, secure, and reliable.',
   },
   {
     name: 'Rupali Gaikwad',
-    role: 'Head of Customer Success',
-    avatar: 'https://placehold.co/400x400.png',
+    role: 'Sales & Marketing',
+    avatar: '/uploads/Sales.jpg',
     bio: 'Rupali leads our support and success teams, ensuring every client has the resources they need to thrive.',
   }
 ];

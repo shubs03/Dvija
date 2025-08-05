@@ -197,10 +197,11 @@ export default function AboutPage() {
               >
                 <Card className="text-center border-0 shadow-lg hover:shadow-primary/20 transition-shadow duration-300 bg-secondary/30">
                   <CardContent className="pt-8">
-                    <Avatar className="h-28 w-28 mx-auto mb-6 ring-4 ring-background">
+                    <Avatar className="h-28 w-28 mx-auto  mb-6 ring-4 ring-background">
                       <AvatarImage
                         src={member.avatar}
                         alt={member.name}
+                        className="object-cover"
                         data-ai-hint="professional headshot"
                       />
                       <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>

@@ -107,7 +107,7 @@ export default function TermsAndConditionsPage() {
                 <p>These Terms are the full agreement between you and us. They operate to the fullest extent of the law and may not be interpreted against us.</p>
 
                 <h2 className="text-primary-foreground">19. CONTACT US</h2>
-                <p>If you have questions, contact us at info@dvijasoftech.com or call us at +91 8421581510.</p>
+                <p>If you have questions, contact us at info@dvijasoftech.com or call us at +91 9689131527.</p>
             </div>
         </div>
       </section>
